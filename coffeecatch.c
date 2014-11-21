@@ -967,6 +967,8 @@ static uintptr_t coffeecatch_get_pc_from_ucontext(const ucontext_t *uc) {
   return uc->uc_mcontext.gregs[REG_PC];
 #elif (defined(__mips__))
   return uc->uc_mcontext.gregs[31];
+#elif (defined(__aarch64__))
+  return uc->uc_mcontext.pc;
 #else
 #error "Architecture is unknown, please report me!"
 #endif
